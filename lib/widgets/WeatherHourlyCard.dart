@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-class WeatherCard extends StatelessWidget {
+class WeatherHourlyCard extends StatelessWidget {
   final String title;
   final int temperature;
   final String iconCode;
   final double temperatureFontSize;
   final double iconScale;
 
-  const WeatherCard({Key key, this.title, this.temperature, this.iconCode, this.temperatureFontSize = 32, this.iconScale = 2}) : super(key: key);
+  const WeatherHourlyCard({Key key, this.title, this.temperature, this.iconCode, this.temperatureFontSize = 32, this.iconScale = 2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        // Добавляем отступы
         padding: EdgeInsets.all(1),
         child: Center(
           child: Row(

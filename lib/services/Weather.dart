@@ -6,8 +6,6 @@ class Weather {
   final DateTime time;
   final int speedWind;
   final int humidity;
-  final int temp_min;
-  final int temp_max;
 
   Weather(
       {this.cityName,
@@ -16,9 +14,7 @@ class Weather {
         this.description,
         this.time,
         this.speedWind,
-        this.humidity,
-        this.temp_max,
-        this.temp_min});
+        this.humidity});
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
@@ -29,8 +25,6 @@ class Weather {
       time: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000),
       speedWind: double.parse(json['wind']['speed'].toString()).toInt(),
       humidity: json['main']['humidity'],
-      temp_min: double.parse(json['main']['temp_min'].toString()).toInt(),
-      temp_max: double.parse(json['main']['temp_max'].toString()).toInt(),
     );
   }
 }

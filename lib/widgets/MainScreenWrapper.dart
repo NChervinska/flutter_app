@@ -2,13 +2,15 @@ import 'package:flutter_app/widgets/WeatherHours.dart';
 import 'package:flutter_app/services/Weather.dart';
 import 'package:flutter/widgets.dart';
 
-import 'WeatherCard.dart';
+import 'WeatherHourlyCard.dart';
+import 'WeatherDay.dart';
 
 class MainScreenWrapper extends StatelessWidget {
   final Weather weather;
   final List<Weather> hourlyWeather;
+  final bool isHourly;
 
-  const MainScreenWrapper({Key key, this.weather, this.hourlyWeather})
+  const MainScreenWrapper({Key key, this.weather, this.hourlyWeather, this.isHourly = true})
       : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class MainScreenWrapper extends StatelessWidget {
         Text(
             '${weather.description}'),
         Spacer(),
-        WeatherCard(
+        WeatherHourlyCard(
           title: "Now",
           temperature: weather.temperature,
           iconCode: weather.iconCode,
@@ -30,7 +32,7 @@ class MainScreenWrapper extends StatelessWidget {
           iconScale: 1,
         ),
         Spacer(),
-        HourlyWeather(hourlyWeather: this.hourlyWeather)
+        isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)
       ]),
     );
   }

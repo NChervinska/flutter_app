@@ -9,11 +9,12 @@ import 'package:flutter_app/widgets/MainScreenWrapper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
-bool isDay = DateTime.now().hour < 19 && DateTime.now().hour < 5;
+bool isDay = DateTime.now().hour < 19 && DateTime.now().hour > 5;
+List<String> _current = ['Hourly weather', 'Weather by day'];
+String _currentSelectedValue = 'Hourly weather';
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                         BlocProvider.of<WeatherBloc>(context).add(WeatherRequested(city: query));
                       }));
                     },
-                  )
+                  ),
                 ],
               ),
               body: Stack(
@@ -54,14 +55,48 @@ class _HomePageState extends State<HomePage> {
                        begin: Alignment.topCenter,
                        end: Alignment.bottomCenter,
                        stops: [0, 1],
-                       colors: isDay ? [Color(0xFF00D1FF), Colors.white, ] : [Color(0xFF00D1FF), Color(0xFF2F4F4F), ],
+                       colors: isDay ? [Colors.white, Color(0xFF00D1FF), ] : [Color(0xFF98AFC7), Color(0xFF00D1FF), ],
                      ),
                    ),
                   ),
+                   Container(
+                     alignment: Alignment.topCenter,
+                     child: FormField<String>(
+                     builder: (FormFieldState<String> state) {
+                     return InputDecorator(
+                      decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))),
+                      isEmpty: _current == 'Hourly weather',
+                       child: DropdownButtonHideUnderline(
+                         child: DropdownButton<String>(
+                         value: _currentSelectedValue,
+                         isDense: true,
+                         onChanged: (String newValue) {
+                         setState(() {
+                         _currentSelectedValue = newValue;
+                         state.didChange(newValue);
+                         print(_currentSelectedValue);
+                         });
+                         },
+                         items: _current.map((String value) {
+                           return DropdownMenuItem<String>(
+                             value: value,
+                             child: Text(value,
+
+                     //        style: TextStyle(
+                 //            color: Colors.deepPurple,)
+                             ),
+                           );
+                         }).toList(),
+                       ),
+                     ),
+                   );
+                   },)
+                  ),
                   Container(
-                    padding: EdgeInsets.only(top: 60),
+                    padding: EdgeInsets.only(top: 100),
                     child: MainScreenWrapper(
-                        weather: state.weather, hourlyWeather: state.hourlyWeather),
+                        weather: state.weather, hourlyWeather: state.hourlyWeather, isHourly: _currentSelectedValue == 'Hourly weather'),
                   ),
                 ]
               )
