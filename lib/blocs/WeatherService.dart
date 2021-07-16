@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_app/services/Weather.dart';
+import 'package:flutter_app/blocs/Weather.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherService {

@@ -1,5 +1,6 @@
+import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'package:flutter_app/widgets/WeatherHours.dart';
-import 'package:flutter_app/services/Weather.dart';
+import 'package:flutter_app/blocs/Weather.dart';
 import 'package:flutter/widgets.dart';
 
 import 'WeatherHourlyCard.dart';
@@ -19,17 +20,22 @@ class MainScreenWrapper extends StatelessWidget {
       child: Column(children: [
         Text(
           weather.cityName,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          style: TextStyles.cityStyle,
         ),
         Text(
-            '${weather.description}'),
+            '${weather.description}',
+          style: TextStyles.descriptionStyle,
+    ),
         Spacer(),
         WeatherHourlyCard(
           title: "Now",
           temperature: weather.temperature,
           iconCode: weather.iconCode,
-          temperatureFontSize: 65,
+          temperatureFontSize: 66,
           iconScale: 1,
+          description: weather.description,
+          speedWind: weather.speedWind,
+          humidity: weather.humidity,
         ),
         Spacer(),
         isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)

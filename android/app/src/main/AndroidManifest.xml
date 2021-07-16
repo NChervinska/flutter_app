@@ -2,7 +2,7 @@
     package="com.flutter_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="flutter_app"
+        android:label="Weather"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

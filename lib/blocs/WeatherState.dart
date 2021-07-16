@@ -1,6 +1,7 @@
-import 'package:flutter_app/services/Weather.dart';
+import 'package:flutter_app/blocs/Weather.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 
 abstract class WeatherState extends Equatable {
   const WeatherState();
@@ -25,4 +26,5 @@ class WeatherLoadSuccess extends WeatherState {
   List<Object> get props => [weather, hourlyWeather];
 }
 
-class WeatherLoadFailure extends WeatherState {}
+class WeatherLoadFailure extends WeatherState{
+}

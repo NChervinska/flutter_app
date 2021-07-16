@@ -1,4 +1,4 @@
-import 'package:flutter_app/services/Weather.dart';
+import 'package:flutter_app/blocs/Weather.dart';
 import 'package:flutter/widgets.dart';
 
 import 'WeatherHourlyCard.dart';
@@ -12,9 +12,9 @@ class HourlyWeather extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(left: 10, right: 10),
-        height: 200.0,
+        height: 300.0,
         child: ListView.builder(
-            scrollDirection: Axis.horizontal,
+            scrollDirection: Axis.vertical,
             itemCount: hourlyWeather.length,
             itemBuilder: (context, i) {
               return WeatherHourlyCard(
@@ -23,6 +23,9 @@ class HourlyWeather extends StatelessWidget {
                 temperature: hourlyWeather[i].temperature.toInt(),
                 iconCode: hourlyWeather[i].iconCode,
                 temperatureFontSize: 20,
+                description: hourlyWeather[i].description,
+                speedWind: hourlyWeather[i].speedWind,
+                humidity: hourlyWeather[i].humidity,
               );
             }
          )

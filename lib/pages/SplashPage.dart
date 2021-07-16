@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
+import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'dart:async';
 
 import 'HomePage.dart';
@@ -31,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0, 1],
-              colors: [Colors.black, Color(0xFF00D1FF), ],
+              colors: [Colors.black, ColorPallet.main, ],
             ),
           ),
           child: Column(
@@ -40,19 +42,11 @@ class _SplashPageState extends State<SplashPage> {
               Container(
                 alignment: Alignment.center,
                 child: Text('Weather',
-                  style: new TextStyle(
-                    fontSize: 90,
-                    fontFamily: 'Qwigley',
-                    color: Colors.white,
-                  )
+                  style: TextStyles.splashStyle
                  ),
               ),
-              Platform.isIOS? Text('IOSr',
-                  style: new TextStyle(
-                    fontSize: 40,
-                    fontFamily: 'Qwigley',
-                    color: Colors.white,
-                  )
+              Platform.isIOS? Text('IOS',
+                  style: TextStyles.iosStyle
               ) : Icon(
                   Icons.android,
                   size: 40,

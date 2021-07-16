@@ -1,4 +1,4 @@
-import 'package:flutter_app/services/Weather.dart';
+import 'package:flutter_app/blocs/Weather.dart';
 import 'package:flutter/widgets.dart';
 
 import 'WeatherDayCard.dart';
@@ -13,9 +13,9 @@ class DayWeather extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(left: 10, right: 10),
-        height: 200.0,
+        height: 300.0,
         child: ListView.builder(
-            scrollDirection: Axis.horizontal,
+            scrollDirection: Axis.vertical,
             itemCount: dayWeather.length,
             itemBuilder: (context, i) {
               return (currentDay == dayWeather[i].time.day) ? Container() : WeatherDayCard(
@@ -23,7 +23,8 @@ class DayWeather extends StatelessWidget {
                  '${dayWeather[i].time.day}.${dayWeather[i].time.month}',
                 temp_min: min_temp(dayWeather[i].time.day),
                 temp_max: max_temp(dayWeather[i].time.day),
-                iconCode: icon(dayWeather[i].time.day),
+                iconCode: icon(dayWeather[i].time.day), 
+                hourlyWeather: weatherForDay(dayWeather[i].time.day),
               );
             }
          )
@@ -55,5 +56,14 @@ class DayWeather extends StatelessWidget {
       }
     }
     return dayWeather[0].iconCode;
+  }
+  List<Weather> weatherForDay(int day){
+    List<Weather> res = new List<Weather>();
+    for (var w in dayWeather) {
+      if(w.time.day == day){
+        res.add(w);
+      }
+    } 
+    return res;
   }
 }

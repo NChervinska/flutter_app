@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 
 class MySearchDelegate extends SearchDelegate {
   String selectedResult;
@@ -47,13 +48,14 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> searchResults = ["Helsinki", "Moscow", "Berlin", "New York", "Saint Petersburg", query].where((element) => element.contains(query)).toList();
+    List<String> searchResults = ["Kharkiv", query].where((element) => element.contains(query)).toList();
 
     return ListView.builder(
       itemCount: searchResults.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(searchResults[index]),
+          title: Text(searchResults[index],
+            style: TextStyles.search),
           onTap: () {
             selectedResult = searchResults[index];
             callback(selectedResult);

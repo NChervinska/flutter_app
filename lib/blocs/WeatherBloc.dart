@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter_app/services/WeatherEvent.dart';
-import 'package:flutter_app/services/Weather.dart';
-import 'package:flutter_app/services/WeatherService.dart';
-import 'package:flutter_app/services/WeatherState.dart';
+import 'package:flutter_app/blocs/WeatherEvent.dart';
+import 'package:flutter_app/blocs/Weather.dart';
+import 'package:flutter_app/blocs/WeatherService.dart';
+import 'package:flutter_app/blocs/WeatherState.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -33,6 +33,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       yield WeatherLoadSuccess(weather: weather, hourlyWeather: hourlyWeather);
     } catch (e) {
       yield WeatherLoadFailure();
+
     }
   }
 
@@ -40,20 +41,23 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     LocationPermission permission = await checkPermission();
     if (permission == LocationPermission.whileInUse ||
         permission == LocationPermission.always) {
-      Position lastKnownPosition = await getLastKnownPosition();
-      if(lastKnownPosition != null) {
-        add(WeatherRequested(
-            lat: lastKnownPosition.latitude.toString(),
-            lon: lastKnownPosition.longitude.toString()));
+        if(!(await Geolocator.isLocationServiceEnabled())) {
+          add(WeatherRequested(
+              city: 'Kiev'));
+        } else {
+          Position position =
+          await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+          print(position);
+          add(WeatherRequested(
+              lat: position.latitude.toString(),
+              lon: position.longitude.toString()));
+        }
 
-      } else {
-        Position position =
-        await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-        add(WeatherRequested(
-            lat: position.latitude.toString(),
-            lon: position.longitude.toString()));
-      }
-    } else {
+    } else if (permission == LocationPermission.deniedForever) {
+      add(WeatherRequested(
+          city: 'Kiev'));
+    }
+    else {
       await requestPermission();
       add(WeatherCurrentPositionRequested());
     }
