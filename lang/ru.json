@@ -1,0 +1,14 @@
+{
+  "Kharkiv" : "Харьков",
+  "Kyiv" : "Киев",
+  "Hourly weather" : "Почасовая погода",
+  "Weather by day" : "Погода по дням",
+  "now_string" : "Сейчас",
+  "Clear" : "Ясно",
+  "Clouds" : "Облачно",
+  "Rain" : "Дождливо",
+  "Temperature" : "Температура",
+  "Wind speed" : "Скорость ветра",
+  "km/h" : "км/час",
+  "Humidity" : "Влажность"
+}

@@ -1,7 +1,9 @@
+import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'package:flutter_app/widgets/WeatherHours.dart';
 import 'package:flutter_app/blocs/Weather.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'WeatherHourlyCard.dart';
 import 'WeatherDay.dart';
@@ -17,28 +19,39 @@ class MainScreenWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
-        Text(
-          weather.cityName,
+      child: ListView(children: [
+        Container(
+          padding: EdgeInsets.only(top: 50),
+          alignment: Alignment.center,
+          child: Text(
+          AppLocalizations.of(context).translate(weather.cityName),
           style: TextStyles.cityStyle,
+          )
         ),
-        Text(
-            '${weather.description}',
+        Center(
+          child: Text(
+          AppLocalizations.of(context).translate('${weather.description}'),
           style: TextStyles.descriptionStyle,
-    ),
-        Spacer(),
+          )
+        ),Container(
+          padding: EdgeInsets.only(top: 30),
+    alignment: Alignment.center,
+        child:
         WeatherHourlyCard(
-          title: "Now",
+          title: AppLocalizations.of(context).translate("now_string"),
           temperature: weather.temperature,
           iconCode: weather.iconCode,
-          temperatureFontSize: 66,
+          temperatureFontSize: 64,
           iconScale: 1,
-          description: weather.description,
+          description: AppLocalizations.of(context).translate(weather.description),
           speedWind: weather.speedWind,
           humidity: weather.humidity,
+        )
         ),
-        Spacer(),
-        isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)
+    Container(
+    padding: EdgeInsets.only(top: 30),
+    child: isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)
+    )
       ]),
     );
   }

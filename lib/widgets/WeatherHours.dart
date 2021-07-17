@@ -1,5 +1,6 @@
 import 'package:flutter_app/blocs/Weather.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/blocs/app_localizations.dart';
 
 import 'WeatherHourlyCard.dart';
 
@@ -23,7 +24,7 @@ class HourlyWeather extends StatelessWidget {
                 temperature: hourlyWeather[i].temperature.toInt(),
                 iconCode: hourlyWeather[i].iconCode,
                 temperatureFontSize: 20,
-                description: hourlyWeather[i].description,
+                description: AppLocalizations.of(context).translate(hourlyWeather[i].description),
                 speedWind: hourlyWeather[i].speedWind,
                 humidity: hourlyWeather[i].humidity,
               );

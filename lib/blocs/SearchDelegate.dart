@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 
+import 'app_localizations.dart';
+
 class MySearchDelegate extends SearchDelegate {
   String selectedResult;
   final Function callback;
@@ -48,7 +50,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> searchResults = ["Kharkiv", query].where((element) => element.contains(query)).toList();
+    List<String> searchResults = [AppLocalizations.of(context).translate("Kharkiv"), AppLocalizations.of(context).translate("Kiev"), query].where((element) => element.contains(query)).toList();
 
     return ListView.builder(
       itemCount: searchResults.length,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 
 class WeatherHourlyCard extends StatelessWidget {
@@ -45,9 +46,10 @@ class WeatherHourlyCard extends StatelessWidget {
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.only(left: 30),
           child: Text(
-            "${this.title}\nTemperature ${this.temperature}°"
-                "\n${this.description}\nWind speed ${this.speedWind} km/h"
-                "\nHumidity ${this.humidity}%",
+            "${this.title}\n${AppLocalizations.of(context).translate("Temperature")} ${this.temperature}°"
+                "\n${this.description}\n${AppLocalizations.of(context).translate("Wind speed")} "
+                "${this.speedWind} ${AppLocalizations.of(context).translate("km/h")}"
+                "\n${AppLocalizations.of(context).translate("Humidity")} ${this.humidity}%",
             style: TextStyles.textStyle,
           ),
         )

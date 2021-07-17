@@ -2,6 +2,7 @@ import 'package:flutter_app/blocs/SearchDelegate.dart';
 import 'package:flutter_app/blocs/WeatherEvent.dart';
 import 'package:flutter_app/blocs/WeatherState.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                      return InputDecorator(
                       decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))),
-                      isEmpty: _current == 'Hourly weather',
+                      isEmpty: _current == AppLocalizations.of(context).translate('Hourly weather'),
                        child: DropdownButtonHideUnderline(
                          child: DropdownButton<String>(
                          value: _currentSelectedValue,
@@ -76,13 +77,12 @@ class _HomePageState extends State<HomePage> {
                          setState(() {
                          _currentSelectedValue = newValue;
                          state.didChange(newValue);
-                         print(_currentSelectedValue);
                          });
                          },
                          items: _current.map((String value) {
                            return DropdownMenuItem<String>(
                              value: value,
-                             child: Text(value,
+                             child: Text(AppLocalizations.of(context).translate(value),
                                style: TextStyles.main
                              ),
                            );
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                    },)
                   ),
                   (state is WeatherLoadSuccess) ? Container(
-                    padding: EdgeInsets.only(top: 100),
+                    padding: EdgeInsets.only(top: 65),
                     child: MainScreenWrapper(
                         weather: state.weather, hourlyWeather: state.hourlyWeather, isHourly: _currentSelectedValue == 'Hourly weather'),
                   ) : Center(
