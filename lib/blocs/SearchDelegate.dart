@@ -50,7 +50,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> searchResults = [AppLocalizations.of(context).translate("Kharkiv"), AppLocalizations.of(context).translate("Kiev"), query].where((element) => element.contains(query)).toList();
+    List<String> searchResults = [AppLocalizations.of(context).translate("Kharkiv"), AppLocalizations.of(context).translate("Kyiv"), query].where((element) => element.contains(query)).toList();
 
     return ListView.builder(
       itemCount: searchResults.length,

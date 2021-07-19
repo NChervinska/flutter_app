@@ -1,4 +1,5 @@
 import 'package:flutter_app/blocs/SearchDelegate.dart';
+import 'package:flutter_app/models/weather.dart';
 import 'package:flutter_app/blocs/WeatherEvent.dart';
 import 'package:flutter_app/blocs/WeatherState.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_app/blocs/WeatherBloc.dart';
 import 'package:flutter_app/widgets/MainScreenWrapper.dart';
+import 'package:hive/hive.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -74,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                          value: _currentSelectedValue,
                          isDense: true,
                          onChanged: (String newValue) {
-                         setState(() {
+                           setState(() {
                          _currentSelectedValue = newValue;
                          state.didChange(newValue);
                          });
@@ -96,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.only(top: 65),
                     child: MainScreenWrapper(
                         weather: state.weather, hourlyWeather: state.hourlyWeather, isHourly: _currentSelectedValue == 'Hourly weather'),
+
                   ) : Center(
                      child: CircularProgressIndicator(),
                   )

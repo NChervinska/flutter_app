@@ -25,7 +25,8 @@ class _SplashPageState extends State<SplashPage> {
     Timer(
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => HomePage())));
+            builder: (BuildContext context) => HomePage(
+            ))));
     return Scaffold(
         body: Container(
           decoration: BoxDecoration(

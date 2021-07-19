@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_app/blocs/WeatherEvent.dart';
-import 'package:flutter_app/blocs/Weather.dart';
+import 'package:flutter_app/models/weather.dart';
 import 'package:flutter_app/blocs/WeatherService.dart';
 import 'package:flutter_app/blocs/WeatherState.dart';
 import 'package:bloc/bloc.dart';
@@ -47,7 +47,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         } else {
           Position position =
           await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-          print(position);
           add(WeatherRequested(
               lat: position.latitude.toString(),
               lon: position.longitude.toString()));

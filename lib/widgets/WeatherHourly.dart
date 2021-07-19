@@ -1,4 +1,4 @@
-import 'package:flutter_app/blocs/Weather.dart';
+import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/blocs/app_localizations.dart';
 
@@ -13,7 +13,7 @@ class HourlyWeather extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(left: 10, right: 10),
-        height: 300.0,
+        height: 320.0,
         child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: hourlyWeather.length,

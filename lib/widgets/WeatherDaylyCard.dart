@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/blocs/Weather.dart';
+import 'package:flutter_app/models/weather.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 
-import 'WeatherHours.dart';
+import 'WeatherHourly.dart';
 
 class WeatherDayCard extends StatelessWidget {
   final String title;

@@ -35,10 +35,16 @@ dependencies:
   flutter_bloc: ^6.0.0
   equatable: ^1.0.0
   geolocator: ^6.2.0
+  hive: ^1.4.1+1
+  path_provider: ^1.6.5
+  hive_flutter: ^0.3.1
+  data_connection_checker: ^0.3.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^0.8.1
+  build_runner: ^1.10.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

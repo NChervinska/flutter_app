@@ -1,12 +1,12 @@
 import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
-import 'package:flutter_app/widgets/WeatherHours.dart';
-import 'package:flutter_app/blocs/Weather.dart';
+import 'package:flutter_app/widgets/WeatherHourly.dart';
+import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'WeatherHourlyCard.dart';
-import 'WeatherDay.dart';
+import 'WeatherDayly.dart';
 
 class MainScreenWrapper extends StatelessWidget {
   final Weather weather;
@@ -35,9 +35,9 @@ class MainScreenWrapper extends StatelessWidget {
           )
         ),Container(
           padding: EdgeInsets.only(top: 30),
-    alignment: Alignment.center,
+        alignment: Alignment.center,
         child:
-        WeatherHourlyCard(
+         WeatherHourlyCard(
           title: AppLocalizations.of(context).translate("now_string"),
           temperature: weather.temperature,
           iconCode: weather.iconCode,
@@ -48,9 +48,9 @@ class MainScreenWrapper extends StatelessWidget {
           humidity: weather.humidity,
         )
         ),
-    Container(
-    padding: EdgeInsets.only(top: 30),
-    child: isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)
+       Container(
+         padding: EdgeInsets.only(top: 30),
+         child: isHourly ? HourlyWeather(hourlyWeather: this.hourlyWeather) : DayWeather(dayWeather: this.hourlyWeather)
     )
       ]),
     );
