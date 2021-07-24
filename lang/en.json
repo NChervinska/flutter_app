@@ -10,5 +10,7 @@
   "Temperature" : "Temperature",
   "Wind speed" : "Wind speed",
   "km/h" : "km/h",
-  "Humidity" : "Humidity"
+  "Humidity" : "Humidity",
+  "Something Went Wrong!" : "Something Went Wrong!",
+  "Logout" : "Logout"
 }

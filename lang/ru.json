@@ -10,5 +10,7 @@
   "Temperature" : "Температура",
   "Wind speed" : "Скорость ветра",
   "km/h" : "км/час",
-  "Humidity" : "Влажность"
+  "Humidity" : "Влажность",
+  "Something Went Wrong!" : "Что-то пошло не так!",
+  "Logout" : "Выход"
 }

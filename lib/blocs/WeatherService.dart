@@ -10,7 +10,7 @@ class WeatherService {
   static Future<Weather> fetchCurrentWeather({query, String lat = "", String lon =""}) async {
     if(await DataConnectionChecker().hasConnection) {
       var url =
-          'https://api.openweathermap.org/data/2.5/weather?q=$query&lat=$lat&lon=$lon&appid=$_apiKey&units=metric';
+      Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$query&lat=$lat&lon=$lon&appid=$_apiKey&units=metric');
       final response = await http.post(url);
       if (response.statusCode == 200) {
         Weather res = Weather.fromJson(json.decode(response.body));
@@ -34,7 +34,7 @@ class WeatherService {
   static Future<List<Weather>> fetchHourlyWeather({String query, String lat = "", String lon =""}) async {
     if (await DataConnectionChecker().hasConnection) {
       var url =
-          'https://api.openweathermap.org/data/2.5/forecast?q=$query&lat=$lat&lon=$lon&appid=$_apiKey&units=metric';
+      Uri.parse('https://api.openweathermap.org/data/2.5/forecast?q=$query&lat=$lat&lon=$lon&appid=$_apiKey&units=metric');
       final response = await http.post(url);
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);

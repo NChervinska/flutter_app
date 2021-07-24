@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "492433330013",
+    "project_id": "weather-16a48",
+    "storage_bucket": "weather-16a48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492433330013:android:f207e03b8a00ce474d62b4",
+        "android_client_info": {
+          "package_name": "com.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492433330013-7l643sskoagl8itk7h7valkb0cfkn0g1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutter_app",
+            "certificate_hash": "9034f14c9b7de590543404f7f6c355adb9a17ee8"
+          }
+        },
+        {
+          "client_id": "492433330013-cnt8a57sdl0eqtr37caou0da24ifk97m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArkiKMy6iidqow0AfWR9B7ndqclqntVG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492433330013-cnt8a57sdl0eqtr37caou0da24ifk97m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

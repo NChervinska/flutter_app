@@ -1,3 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_app/blocs/google_sign_in.dart';
+import 'package:flutter_app/pages/AuthenticationPage.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/SplashPage.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +8,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:provider/provider.dart';
 import 'models/weather.dart';
 import 'blocs/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   Hive.registerAdapter(WeatherAdapter());
@@ -22,8 +27,9 @@ class MyApp extends StatefulWidget {
 }
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (contect) => GoogleSignInProvider(),
+    child: MaterialApp(
       theme: ThemeData(
         primaryColorDark: Colors.white,
         primaryColor: Colors.white,
@@ -59,8 +65,8 @@ class _MyAppState extends State<MyApp> {
             return Scaffold();
         },
       ),
+    ),
     );
-  }
   @override
   void dispose() {
     Hive.close();

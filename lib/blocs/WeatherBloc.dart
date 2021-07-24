@@ -38,7 +38,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   }
 
   Stream<WeatherState> _newWeatherCurrentPositionRequested() async* {
-    LocationPermission permission = await checkPermission();
+    LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.whileInUse ||
         permission == LocationPermission.always) {
         if(!(await Geolocator.isLocationServiceEnabled())) {
@@ -46,7 +46,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
               city: 'Kiev'));
         } else {
           Position position =
-          await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+          await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
           add(WeatherRequested(
               lat: position.latitude.toString(),
               lon: position.longitude.toString()));
@@ -57,7 +57,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           city: 'Kiev'));
     }
     else {
-      await requestPermission();
+      await Geolocator.requestPermission();
       add(WeatherCurrentPositionRequested());
     }
   }

@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_app/blocs/SearchDelegate.dart';
-import 'package:flutter_app/models/weather.dart';
 import 'package:flutter_app/blocs/WeatherEvent.dart';
 import 'package:flutter_app/blocs/WeatherState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocs/app_localizations.dart';
+import 'package:flutter_app/blocs/google_sign_in.dart';
 import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/blocs/WeatherBloc.dart';
 import 'package:flutter_app/widgets/MainScreenWrapper.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -20,7 +23,9 @@ class HomePage extends StatefulWidget {
 bool isDay = DateTime.now().hour < 19 && DateTime.now().hour > 5;
 List<String> _current = ['Hourly weather', 'Weather by day'];
 String _currentSelectedValue = 'Hourly weather';
+
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -30,14 +35,60 @@ class _HomePageState extends State<HomePage> {
             return Scaffold(
               appBar: AppBar(
                 elevation: 0,
-                //toooooooooooooooooooooooooooooo
                 backgroundColor: ColorPallet.main,
                 actions: [
+                  StreamBuilder(
+                    stream: FirebaseAuth.instance.authStateChanges(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return CircularProgressIndicator();
+                        } else if (snapshot.hasData) {
+                          final user = FirebaseAuth.instance.currentUser;
+                          return Row(
+                            children: [
+                              CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(user.photoURL),
+                          ),
+                              Text( user.displayName,
+                                style: TextStyles.descriptionStyle
+                              ),
+                              TextButton(
+                                child: Text(
+                                    AppLocalizations.of(context).translate(
+                                        "Logout"),
+                                  style: TextStyles.textStyle,
+                                ),
+                                onPressed:(){
+                                   final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                                   provider.logout();
+                                },
+                              )
+                          ]
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text(AppLocalizations.of(context).translate(
+                              "Something Went Wrong!"));
+                        } else {
+                          return IconButton(
+                            iconSize: 60.0,
+                            icon: Image.asset(
+                              "assets/images/google-logo.png",
+                              fit: BoxFit.fill,),
+                            onPressed: () {
+                              final provider = Provider.of<
+                                  GoogleSignInProvider>(context, listen: false);
+                              provider.googleLogin();
+                            },
+                          );
+                        }
+                      }
+                  ),
                   IconButton(
                     icon: Icon(Icons.my_location,),
                     onPressed: () {
                       BlocProvider.of<WeatherBloc>(context).add(WeatherCurrentPositionRequested());
-                      //toooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
                     },
                   ),
                   IconButton(
