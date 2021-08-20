@@ -12,5 +12,7 @@
   "km/h" : "km/h",
   "Humidity" : "Humidity",
   "Something Went Wrong!" : "Something Went Wrong!",
-  "Logout" : "Logout"
+  "Logout" : "Logout",
+  "Weather!!!" : "Weather!!!",
+  "Do you watch the weather today?" : "Do you watch the weather today?"
 }

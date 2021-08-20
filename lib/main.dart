@@ -1,7 +1,12 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_app/blocs/google_sign_in.dart';
+import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
 import 'package:flutter_app/pages/AuthenticationPage.dart';
 import 'package:flutter_app/pages/HomePage.dart';
+import 'package:flutter_app/pages/NativePage.dart';
 import 'package:flutter_app/pages/SplashPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,11 +19,31 @@ import 'blocs/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  AwesomeNotifications().initialize(
+    'resource://drawable/res_notification_app_icon',
+    [
+      NotificationChannel(
+        channelKey: 'key1',
+        channelName: 'Notifications',
+        channelDescription: "Notification",
+        defaultColor: ColorPallet.main,
+        playSound: true,
+        enableVibration: true,
+      ),
+    ],
+  );
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebasePushHandler);
   Hive.init(appDocumentDir.path);
   Hive.registerAdapter(WeatherAdapter());
   runApp(MyApp());
+}
+
+Future<void> _firebasePushHandler(RemoteMessage message) async{
+  print(message.data);
+  AwesomeNotifications().createNotificationFromJsonData(message.data);
+
 }
 
 class MyApp extends StatefulWidget {
@@ -59,7 +84,7 @@ class _MyAppState extends State<MyApp> {
             if (snapshot.hasError)
               return Text(snapshot.error.toString());
             else
-              return SplashPage();
+              return NativePage();
           }
           else
             return Scaffold();

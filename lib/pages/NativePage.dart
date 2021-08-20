@@ -5,15 +5,15 @@ import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'dart:async';
 
-import 'HomePage.dart';
+import 'SplashPage.dart';
 
 
-class SplashPage extends StatefulWidget {
+class NativePage extends StatefulWidget {
   @override
-  _SplashPageState createState() => _SplashPageState();
+  _NativePageState createState() => _NativePageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _NativePageState extends State<NativePage> {
 
   @override
   void initState() {
@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     Timer(
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => HomePage(
+            builder: (BuildContext context) => SplashPage(
             ))));
     return Scaffold(
         body: Container(
@@ -34,15 +34,18 @@ class _SplashPageState extends State<SplashPage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0, 1],
-              colors: [Colors.black, ColorPallet.main, ],
+              colors: [ ColorPallet.main, Colors.black,],
             ),
           ),
-          child:
-              Container(
-                alignment: Alignment.center,
-                child: Text('Weather',
-                  style: TextStyles.splashStyle
-                 ),
+          child: Container(
+            alignment: Alignment.center,
+              child: Platform.isIOS? Text('IOS',
+                  style: TextStyles.iosStyle
+              ) : Icon(
+                  Icons.android,
+                  size: 40,
+                  color: Colors.white
+              )
           ),
         )
     );

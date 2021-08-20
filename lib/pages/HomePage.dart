@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_app/blocs/SearchDelegate.dart';
@@ -8,8 +10,8 @@ import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/blocs/google_sign_in.dart';
 import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
+import 'package:flutter_app/models/notification.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_app/blocs/WeatherBloc.dart';
 import 'package:flutter_app/widgets/MainScreenWrapper.dart';
 import 'package:hive/hive.dart';
@@ -23,10 +25,10 @@ class HomePage extends StatefulWidget {
 bool isDay = DateTime.now().hour < 19 && DateTime.now().hour > 5;
 List<String> _current = ['Hourly weather', 'Weather by day'];
 String _currentSelectedValue = 'Hourly weather';
-
+User u;
 class _HomePageState extends State<HomePage> {
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => WeatherBloc(),
@@ -45,12 +47,18 @@ class _HomePageState extends State<HomePage> {
                           return CircularProgressIndicator();
                         } else if (snapshot.hasData) {
                           final user = FirebaseAuth.instance.currentUser;
+                          if (state is WeatherLoadSuccess) {
+                           //To dooooooooo
+                          }
                           return Row(
                             children: [
                               CircleAvatar(
                             radius: 20,
                             backgroundImage: NetworkImage(user.photoURL),
                           ),
+                              SizedBox(
+                                width: 10
+                              ),
                               Text( user.displayName,
                                 style: TextStyles.descriptionStyle
                               ),
@@ -145,6 +153,12 @@ class _HomePageState extends State<HomePage> {
                    );
                    },)
                   ),
+              /*    ElevatedButton(
+                    onPressed: () {
+                  createWeatherNotification(context);
+                    },
+                    child: Icon(Icons.notifications),
+                  ), */
                   (state is WeatherLoadSuccess) ? Container(
                     padding: EdgeInsets.only(top: 65),
                     child: MainScreenWrapper(

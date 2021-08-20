@@ -12,5 +12,7 @@
   "km/h" : "км/час",
   "Humidity" : "Влажность",
   "Something Went Wrong!" : "Что-то пошло не так!",
-  "Logout" : "Выход"
+  "Logout" : "Выход",
+  "Weather!!!" : "Погода!!!",
+  "Do you watch the weather today?" : "Вы посмотрели погоду сегодня? "
 }
