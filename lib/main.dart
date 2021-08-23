@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_app/blocs/google_sign_in.dart';
 import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
-import 'package:flutter_app/pages/AuthenticationPage.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/NativePage.dart';
 import 'package:flutter_app/pages/SplashPage.dart';

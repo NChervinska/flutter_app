@@ -14,5 +14,7 @@
   "Something Went Wrong!" : "Something Went Wrong!",
   "Logout" : "Logout",
   "Weather!!!" : "Weather!!!",
-  "Do you watch the weather today?" : "Do you watch the weather today?"
+  "Do you watch the weather today?" : "Do you watch the weather today?",
+  "Find the weather in " : "Find the weather in ",
+  "Find the city again" : "Find the city again"
 }

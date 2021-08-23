@@ -43,11 +43,8 @@ dependencies:
   firebase_auth: ^1.0.1
   google_sign_in: ^5.0.3
   provider: ^5.0.0
-  #flutter_login_facebook: ^1.0.1
-  #flutter_facebook_login: ^3.0.0
+  flutter_login_facebook: ^1.1.0
   awesome_notifications: ^0.0.6+10
-  #firebase_crashlytics: ^0.2.1+1
-  #firebase_analytics: ^6.3.0
   firebase_messaging: ^10.0.5
 
 
