@@ -26,7 +26,8 @@ class _NativePageState extends State<NativePage> {
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => SplashPage(
-            ))));
+            ))
+            ));
     return Scaffold(
         body: Container(
           decoration: BoxDecoration(

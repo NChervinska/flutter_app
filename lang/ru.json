@@ -16,5 +16,8 @@
   "Weather!!!" : "Погода!!!",
   "Do you watch the weather today?" : "Вы посмотрели погоду сегодня? ",
   "Find the weather in " : "Найти погоду в ",
-  "Find the city again" : "Найти город заново"
+  "Re-define the city" : "Определить город заново",
+  "Unknown user" : "Неизвестный пользователь",
+  "Sign in without an account" : "Войти без аккаунта",
+  "Drizzle" : "Морось"
 }

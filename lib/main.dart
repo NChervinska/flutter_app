@@ -9,6 +9,7 @@ import 'package:flutter_app/pages/NativePage.dart';
 import 'package:flutter_app/pages/SplashPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -19,6 +20,7 @@ import 'blocs/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  await GetStorage.init();
   AwesomeNotifications().initialize(
     'resource://drawable/res_notification_app_icon',
     [

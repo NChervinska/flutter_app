@@ -3,7 +3,6 @@ import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
 import 'package:flutter_app/widgets/WeatherHourly.dart';
 import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'WeatherHourlyCard.dart';
 import 'WeatherDayly.dart';

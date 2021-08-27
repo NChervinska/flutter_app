@@ -16,5 +16,8 @@
   "Weather!!!" : "Weather!!!",
   "Do you watch the weather today?" : "Do you watch the weather today?",
   "Find the weather in " : "Find the weather in ",
-  "Find the city again" : "Find the city again"
+  "Re-define the city" : "Re-define the city",
+  "Unknown user" : "Unknown user",
+  "Sign in without an account" : "Sign in without an account",
+  "Drizzle" : "Drizzle"
 }

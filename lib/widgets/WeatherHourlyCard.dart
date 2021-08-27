@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocs/app_localizations.dart';
 import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
+import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 
 class WeatherHourlyCard extends StatelessWidget {
   final String title;
@@ -22,7 +23,15 @@ class WeatherHourlyCard extends StatelessWidget {
         child: Center(
           child: Row(
             children: [
-              Image.network("https://openweathermap.org/img/wn/${this.iconCode}@2x.png", scale: this.iconScale / 1.5 ),
+              LoadImageFromUrl(
+                      "https://openweathermap.org/img/wn/${this.iconCode}@2x.png",
+                      (image) => Image.network("https://openweathermap.org/img/wn/${this.iconCode}@2x.png", scale: this.iconScale / 1.5 ),
+                      () => CircularProgressIndicator(),
+                      (IRetryLoadImage retryLoadImage, code , message){
+                    return Icon(Icons.wb_sunny_outlined);
+                  },
+                  requestTimeout: Duration(seconds: 2)
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
