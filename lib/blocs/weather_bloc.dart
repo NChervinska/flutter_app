@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocs/weather_event.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
 import 'package:flutter_app/models/weather.dart';
-import 'package:flutter_app/blocs/weather_service.dart';
+import 'package:flutter_app/service/weather_service.dart';
 import 'package:flutter_app/blocs/weather_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -44,7 +45,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           permission == LocationPermission.always) {
         if (!(await Geolocator.isLocationServiceEnabled())) {
           add(WeatherRequested(
-              city: 'Kiev'));
+              city: ConstantsString.capitalCity));
         } else {
           Position position =
           await Geolocator.getCurrentPosition(
@@ -55,7 +56,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         }
       } else if (permission == LocationPermission.deniedForever) {
         add(WeatherRequested(
-            city: 'Kiev'));
+            city: ConstantsString.capitalCity));
       }
       else {
         await Geolocator.requestPermission();

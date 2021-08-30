@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/weather.dart';
-import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/constants/ui_constants/text_styles.dart';
 import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 
 import 'weather_hourly.dart';

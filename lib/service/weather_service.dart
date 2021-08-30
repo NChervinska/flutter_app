@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
 import 'package:flutter_app/models/weather.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
@@ -18,7 +19,7 @@ class WeatherService {
         Hive.box('weather').put('now', res);
         return res;
       } else {
-        throw Exception('Failed to load weather');
+        throw Exception(ConstantsString.fail);
       }
     }
     else{
@@ -26,7 +27,7 @@ class WeatherService {
         if(now != null) {
           return now;
         }else {
-          throw Exception('Failed to load weather');
+          throw Exception(ConstantsString.fail);
         }
     }
   }
@@ -50,7 +51,7 @@ class WeatherService {
         }
         return data;
       } else {
-        throw Exception('Failed to load weather');
+        throw Exception(ConstantsString.fail);
       }
     }
     else {
@@ -61,7 +62,7 @@ class WeatherService {
       if (weather != null) {
         return weather;
       }else {
-        throw Exception('Failed to load weather');
+        throw Exception(ConstantsString.fail);
       }
     }
   }

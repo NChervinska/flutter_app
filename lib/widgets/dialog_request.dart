@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
 
-import '../blocs/app_localizations.dart';
+import '../app_localizations.dart';
 
 class DialogRequest {
   String _answer = "";
@@ -26,18 +27,18 @@ class DialogRequest {
                   },
                   child: Text(
                     AppLocalizations.of(context).translate(
-                        "Find the weather in ") +
+                        ConstantsString.findWeather) +
                         AppLocalizations.of(context).translate(city),
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    _answer = "current";
-                    Navigator.of(context).pop("current");
+                    _answer = ConstantsString.dialogAnswer;
+                    Navigator.of(context).pop(ConstantsString.dialogAnswer);
                   },
                   child: Text(
                     AppLocalizations.of(context).translate(
-                        "Re-define the city"),
+                        ConstantsString.redefineCity),
                   ),
                 ),
               ],

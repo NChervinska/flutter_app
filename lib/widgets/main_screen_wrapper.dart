@@ -1,11 +1,12 @@
-import 'package:flutter_app/blocs/app_localizations.dart';
-import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/app_localizations.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
+import 'package:flutter_app/constants/ui_constants/text_styles.dart';
 import 'package:flutter_app/widgets/weather_hourly.dart';
 import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
 
 import 'weather_hourly_card.dart';
-import 'weather_dayly.dart';
+import 'weather_daily.dart';
 
 class MainScreenWrapper extends StatelessWidget {
   final Weather weather;
@@ -37,7 +38,7 @@ class MainScreenWrapper extends StatelessWidget {
         alignment: Alignment.center,
         child:
          WeatherHourlyCard(
-          title: AppLocalizations.of(context).translate("now_string"),
+          title: AppLocalizations.of(context).translate(ConstantsString.nowString),
           temperature: weather.temperature,
           iconCode: weather.iconCode,
           temperatureFontSize: 64,

@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/constants/UIConstants/color_pallet.dart';
-import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/constants/ui_constants/color_pallet.dart';
+import 'package:flutter_app/constants/ui_constants/text_styles.dart';
 import 'dart:async';
 
 import 'splash_page.dart';

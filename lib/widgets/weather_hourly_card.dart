@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/blocs/app_localizations.dart';
-import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/app_localizations.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
+import 'package:flutter_app/constants/ui_constants/text_styles.dart';
 import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 
 class WeatherHourlyCard extends StatelessWidget {
@@ -55,10 +56,10 @@ class WeatherHourlyCard extends StatelessWidget {
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.only(left: 30),
           child: Text(
-            "${this.title}\n${AppLocalizations.of(context).translate("Temperature")} ${this.temperature}°"
-                "\n${this.description}\n${AppLocalizations.of(context).translate("Wind speed")} "
-                "${this.speedWind} ${AppLocalizations.of(context).translate("km/h")}"
-                "\n${AppLocalizations.of(context).translate("Humidity")} ${this.humidity}%",
+            "${this.title}\n${AppLocalizations.of(context).translate(ConstantsString.temperature)} ${this.temperature}°"
+                "\n${this.description}\n${AppLocalizations.of(context).translate(ConstantsString.windSpeed)} "
+                "${this.speedWind} ${AppLocalizations.of(context).translate(ConstantsString.km)}"
+                "\n${AppLocalizations.of(context).translate(ConstantsString.humidity)} ${this.humidity}%",
             style: TextStyles.textStyle,
           ),
         )

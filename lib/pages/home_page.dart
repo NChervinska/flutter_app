@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app/models/dialog_request.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
+import 'package:flutter_app/widgets/dialog_request.dart';
 import 'package:flutter_app/blocs/search_delegate.dart';
 import 'package:flutter_app/blocs/weather_event.dart';
 import 'package:flutter_app/blocs/weather_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/blocs/app_localizations.dart';
+import 'package:flutter_app/app_localizations.dart';
 import 'package:flutter_app/blocs/google_sign_in.dart';
-import 'package:flutter_app/constants/UIConstants/color_pallet.dart';
-import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/constants/ui_constants/color_pallet.dart';
+import 'package:flutter_app/constants/ui_constants/text_styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/blocs/weather_bloc.dart';
 import 'package:flutter_app/widgets/main_screen_wrapper.dart';
@@ -23,8 +24,8 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => _HomePageState();
 }
 bool isDay = DateTime.now().hour < 19 && DateTime.now().hour > 5;
-List<String> _current = ['Hourly weather', 'Weather by day'];
-String _currentSelectedValue = 'Hourly weather';
+List<String> _current = [ConstantsString.hourlyWeather, ConstantsString.dailyWeather];
+String _currentSelectedValue = ConstantsString.hourlyWeather;
 
 class _HomePageState extends State<HomePage> {
 
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         } else if (snapshot.hasError) {
                           return Text(AppLocalizations.of(context).translate(
-                              "Something Went Wrong!"));
+                              ConstantsString.wrong));
                         } else if(isLogin){
                           return Row(
                               children: [
@@ -170,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.circular(
                                           5.0))),
                               isEmpty: _current == AppLocalizations.of(context)
-                                  .translate('Hourly weather'),
+                                  .translate(ConstantsString.hourlyWeather),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
                                   value: _currentSelectedValue,
@@ -300,7 +301,7 @@ Future<void> _onPressedGoogleButton(BuildContext context) async{
      var d = new DialogRequest();
      await d.dialog(context, city);
      String res = d.cityOrCurrent();
-     if (res == "current") {
+     if (res == ConstantsString.dialogAnswer) {
        BlocProvider.of<WeatherBloc>(context).add(
            WeatherCurrentPositionRequested());
      }
@@ -318,7 +319,7 @@ Future<void> _onPressedGoogleButton(BuildContext context) async{
       child: MainScreenWrapper(
           weather: state.weather,
           hourlyWeather: state.hourlyWeather,
-          isHourly: _currentSelectedValue == 'Hourly weather'),
+          isHourly: _currentSelectedValue == ConstantsString.hourlyWeather),
     );
   }
 }

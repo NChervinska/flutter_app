@@ -1,7 +1,8 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_app/blocs/app_localizations.dart';
+import 'package:flutter_app/app_localizations.dart';
+import 'package:flutter_app/constants/ui_constants/constants_string.dart';
 
 Future<void> createWeatherNotification(BuildContext context) async {
   await AwesomeNotifications().createNotification(
@@ -9,8 +10,8 @@ Future<void> createWeatherNotification(BuildContext context) async {
       id: createUniqueId(),
       channelKey: 'key1',
       title:
-      AppLocalizations.of(context).translate('Weather!!!'),
-      body: '${Emojis.sun}' + AppLocalizations.of(context).translate('Do you watch the weather today?'),
+      AppLocalizations.of(context).translate(ConstantsString.weather),
+      body: '${Emojis.sun}' + AppLocalizations.of(context).translate(ConstantsString.notificationText),
       bigPicture: 'https://ru.meteotrend.com/tpl/images/meteotrend_sun_and_cloud2.png',
       notificationLayout: NotificationLayout.BigPicture,
     ),
