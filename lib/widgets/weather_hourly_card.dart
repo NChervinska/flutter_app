@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocs/app_localizations.dart';
-import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
+import 'package:flutter_app/constants/UIConstants/text_styles.dart';
 import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 
 class WeatherHourlyCard extends StatelessWidget {

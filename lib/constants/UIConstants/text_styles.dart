@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
+import 'package:flutter_app/constants/UIConstants/color_pallet.dart';
 
 class TextStyles {
   static TextStyle topBarTextStyle = TextStyle(

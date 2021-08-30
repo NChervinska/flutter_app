@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/constants/UIConstants/ColorPallet.dart';
-import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
+import 'package:flutter_app/constants/UIConstants/color_pallet.dart';
+import 'package:flutter_app/constants/UIConstants/text_styles.dart';
 import 'dart:async';
 
-import 'SplashPage.dart';
+import 'splash_page.dart';
 
 
 class NativePage extends StatefulWidget {

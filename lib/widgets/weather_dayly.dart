@@ -1,7 +1,7 @@
 import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
 
-import 'WeatherDaylyCard.dart';
+import 'weather_dayly_card.dart';
 
 int currentDay = 0;
 

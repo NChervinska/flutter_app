@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
+import 'package:flutter_app/constants/UIConstants/text_styles.dart';
 
 import 'app_localizations.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter_app/blocs/app_localizations.dart';
-import 'package:flutter_app/constants/UIConstants/TextStyles.dart';
-import 'package:flutter_app/widgets/WeatherHourly.dart';
+import 'package:flutter_app/constants/UIConstants/text_styles.dart';
+import 'package:flutter_app/widgets/weather_hourly.dart';
 import 'package:flutter_app/models/weather.dart';
 import 'package:flutter/widgets.dart';
 
-import 'WeatherHourlyCard.dart';
-import 'WeatherDayly.dart';
+import 'weather_hourly_card.dart';
+import 'weather_dayly.dart';
 
 class MainScreenWrapper extends StatelessWidget {
   final Weather weather;

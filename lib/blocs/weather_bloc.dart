@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/blocs/WeatherEvent.dart';
+import 'package:flutter_app/blocs/weather_event.dart';
 import 'package:flutter_app/models/weather.dart';
-import 'package:flutter_app/blocs/WeatherService.dart';
-import 'package:flutter_app/blocs/WeatherState.dart';
+import 'package:flutter_app/blocs/weather_service.dart';
+import 'package:flutter_app/blocs/weather_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
